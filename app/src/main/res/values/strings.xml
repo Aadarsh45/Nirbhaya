@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Nirbhaya</string>
+    <string name="in_case_of_emmergency">In case of emergency, keep telling family members to contact me</string>
+    <string name="home">Home</string>
+    <string name="dashboards">Dashboards</string>
+    <string name="my_family">Family</string>
+    <string name="profile">Profile</string>
+    <string name="guard">Guard</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="guardString">Open when you are on a potentially dangerous journey</string>
+
+
+</resources>
