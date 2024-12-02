@@ -24,21 +24,7 @@ Nirbhaya is a comprehensive family safety app designed to ensure the safety and 
 
 ---
 
-## Installation  
 
-1. **Download**  
-   - Available on [Google Play Store](#) and [Apple App Store](#).  
-
-2. **Sign Up**  
-   - Create an account using your email or phone number.  
-
-3. **Add Members**  
-   - Invite family members to join your group using unique group codes or email invitations.  
-
-4. **Set Up SOS**  
-   - Configure your SOS message and emergency contacts.  
-
----
 
 ## Usage  
 
