@@ -24,5 +24,6 @@ interface ContactDao {
     @Update
     suspend fun updateContact(contact: ContactModel)
 
-
+    @Query("DELETE FROM contactList")
+    suspend fun deleteAllContacts()
 }
