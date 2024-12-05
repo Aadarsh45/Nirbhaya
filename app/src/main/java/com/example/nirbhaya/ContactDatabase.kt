@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [ContactModel::class], version = 2, exportSchema = true)
+@Database(entities = [ContactModel::class], version = 1, exportSchema = false)
 abstract class ContactDatabase : RoomDatabase() {
 
     abstract fun contactDao(): ContactDao
@@ -20,7 +20,7 @@ abstract class ContactDatabase : RoomDatabase() {
                     context.applicationContext,
                     ContactDatabase::class.java,
                     "contact_database"
-                ).fallbackToDestructiveMigration()
+                ).fallbackToDestructiveMigration() // Use this for migrations if required
                     .build()
                 INSTANCE = instance
                 instance
