@@ -1,7 +1,7 @@
 
-# Nirbhaya - Family Safety App  
+# SurakshaSetu - Family Safety App  
 
-Nirbhaya is a mobile safety application tailored to ensure the safety and well-being of families. It provides features such as real-time location tracking, SOS alerts, and group management to keep loved ones secure. This document serves as a complete guide for developers and users, explaining its features, technical implementation, workflows, and more.  
+SurakshaSetu is a mobile safety application tailored to ensure the safety and well-being of families. It provides features such as real-time location tracking, SOS alerts, and group management to keep loved ones secure. This document serves as a complete guide for developers and users, explaining its features, technical implementation, workflows, and more.  
 
 ---
 
@@ -39,7 +39,7 @@ Nirbhaya is a mobile safety application tailored to ensure the safety and well-b
 
 ## 1. Introduction  
 
-**Nirbhaya** is a family safety application designed with a focus on providing peace of mind. It ensures that family members are always connected and prepared to handle emergencies effectively. The app combines Android’s features like location tracking, permissions, and database management to deliver a seamless experience.  
+**SurakshaSetu** is a family safety application designed with a focus on providing peace of mind. It ensures that family members are always connected and prepared to handle emergencies effectively. The app combines Android’s features like location tracking, permissions, and database management to deliver a seamless experience.  
 
 ---
 
