@@ -45,7 +45,7 @@ class MapsFragment : Fragment() {
         }
 
         olaMapView.getMap(
-            apiKey = "",
+            apiKey = "UKgJQ6Uryy7lLCHKhukCWIst6wKV4TPuxqwCaXhn",
             olaMapCallback = object : OlaMapCallback {
                 override fun onMapReady(olaMap: OlaMap) {
                     // Map is ready to use
