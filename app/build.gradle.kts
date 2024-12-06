@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("org.jetbrains.kotlin.kapt") // Required for Kotlin annotation processing
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -107,8 +108,33 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version")
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version")
 
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
+
+
+    // TODO: Add the dependencies for Firebase products you want to use
+    // When using the BoM, don't specify versions in Firebase dependencies
+    implementation("com.google.firebase:firebase-analytics")
+
+    implementation ("com.google.firebase:firebase-auth")
+    implementation ("com.google.android.gms:play-services-auth")
+
+
+    // Add the dependencies for any other desired Firebase products
+
 // Testing Libraries
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.6") // Upgraded to the latest version
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1") // Latest stable version
+
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+
+    // Declare the dependency for the Cloud Firestore library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-firestore")
+
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+
 }

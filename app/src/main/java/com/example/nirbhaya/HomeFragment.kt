@@ -83,11 +83,11 @@ class HomeFragment : Fragment() {
                 contactViewModel.insertContacts(deviceContacts)
                 Log.d("LoadContacts", "Inserted ${deviceContacts.size} device contacts into Room database.")
 
-                // Update RecyclerView on the main thread
-                withContext(Dispatchers.Main) {
-                    inviteAdapter.notifyDataSetChanged()
-                    Log.d("LoadContacts", "Updated RecyclerView with device contacts.")
-                }
+//                // Update RecyclerView on the main thread
+//                withContext(Dispatchers.Main) {
+//                    inviteAdapter.notifyDataSetChanged()
+//                    Log.d("LoadContacts", "Updated RecyclerView with device contacts.")
+//                }
 
                 Log.d("LoadContacts", "Finished loading contacts successfully.")
             } catch (e: Exception) {

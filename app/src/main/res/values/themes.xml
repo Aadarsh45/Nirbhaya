@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.Nirbhaya.NoActionBar" parent="Base.Theme.Nirbhaya" />
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
 </resources>

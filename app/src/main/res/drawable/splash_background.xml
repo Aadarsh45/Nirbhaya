@@ -6,6 +6,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/ic_user_color" />
+            android:src="@drawable/ic_user_color1" />
     </item>
 </layer-list>
