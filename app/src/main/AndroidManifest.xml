@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nirbhaya.NoActionBar"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:logo="@drawable/ic_logo">
         <activity
             android:name=".LoginActivity"
             android:exported="true">
