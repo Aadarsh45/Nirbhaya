@@ -1,11 +1,12 @@
 
-# Nirbhaya - Family Safety App  
 
-Nirbhaya is a mobile safety application tailored to ensure the safety and well-being of families. It provides features such as real-time location tracking, SOS alerts, and group management to keep loved ones secure. This document serves as a complete guide for developers and users, explaining its features, technical implementation, workflows, and more.  
+# **SurakshaSetu - Family Safety App**
+
+SurakshaSetu is a comprehensive family safety application designed to provide peace of mind through real-time location tracking, emergency alert systems, and secure group management features. This report presents the app's functionalities, technical design, implementation, and future plans, ensuring a clear understanding for developers and end-users alike.
 
 ---
 
-## Table of Contents  
+## **Table of Contents**
 
 1. **Introduction**  
 2. **Features**  
@@ -17,234 +18,264 @@ Nirbhaya is a mobile safety application tailored to ensure the safety and well-b
 6. **Code Walkthrough**  
    - MainActivity  
    - Database Implementation  
-   - Adapters  
    - Maps Integration  
+   - Invites System  
+   - SOS Alerts  
 7. **Detailed Flowcharts**  
    - High-Level Flowchart  
-   - Low-Level Flowchart  
+   - Low-Level Flowchart (SOS & Location Sharing)  
 8. **Screenshots and User Interface**  
 9. **Workflows**  
    - SOS Alerts  
    - Adding and Managing Contacts  
    - Viewing Locations on Map  
+   - Invites System  
 10. **Privacy and Security**  
+    - Data Encryption  
+    - User Permissions  
+    - Data Retention Policy  
 11. **Testing**  
     - Test Scenarios  
-    - Test Cases  
-12. **Future Enhancements**  
-13. **Contributions**  
-14. **License**  
+    - Sample Test Cases  
+12. **Challenges and Solutions**  
+13. **Performance Optimization**  
+14. **Future Enhancements**  
+15. **References**  
+16. **Appendices**  
 
 ---
 
-## 1. Introduction  
+## **1. Introduction**
 
-**Nirbhaya** is a family safety application designed with a focus on providing peace of mind. It ensures that family members are always connected and prepared to handle emergencies effectively. The app combines Android’s features like location tracking, permissions, and database management to deliver a seamless experience.  
+SurakshaSetu empowers families with tools to monitor, connect, and respond effectively during emergencies. The app integrates location tracking, secure communication, and user-friendly interfaces, making it an essential tool in today’s fast-paced world.  
 
----
+**Primary Goals:**  
+- Enhance personal and family safety.  
+- Provide real-time data sharing with minimal latency.  
+- Ensure privacy through encrypted data handling.  
 
-## 2. Features  
-
-### **Core Features**  
-
-#### 2.1 Real-Time Location Tracking  
-- **Description:** Tracks the live location of family members.  
-- **Technical Implementation:** Uses the Ola Maps SDK to fetch GPS coordinates.  
-
-#### 2.2 SOS Alerts  
-- **Description:** Enables users to send an emergency alert to trusted contacts.  
-- **Technical Implementation:** Combines push notifications and live location sharing.  
-
-#### 2.3 Contact Management  
-- **Description:** Allows users to add, edit, and remove family members.  
-- **Technical Implementation:** Uses Room database for efficient local storage.  
-
-#### 2.4 Location Sharing  
-- **Description:** Users can share their location manually.  
+**Key Highlights:**  
+- Ola Maps SDK integration for robust location tracking.  
+- Firebase for real-time database management and notifications.  
+- Modular design for scalability and ease of maintenance.  
 
 ---
 
-## 3. System Requirements  
+## **2. Features**
 
-### **Minimum Requirements:**  
-- **OS Version:** Android 8.0 (Oreo) or higher  
-- **RAM:** 2GB or more  
-- **Storage:** 100MB free space  
+### **2.1 Real-Time Location Tracking**  
+- **Description:** Allows users to track family members' locations in real time.  
+- **Technical Details:**  
+  - Utilizes Ola Maps SDK for GPS data.  
+  - Smooth camera transitions using `moveCameraToLatLong` API.  
 
-### **Dependencies:**  
-- Ola Maps SDK  
-- Android Lifecycle components  
-- Room Database  
+### **2.2 SOS Alerts**  
+- **Description:** Sends emergency alerts with live location details.  
+- **Workflow:**  
+  - Fetches user location using `LocationManager`.  
+  - Sends push notifications to pre-defined contacts.  
+
+### **2.3 Contact Management**  
+- **Description:** Provides options to add, edit, and delete trusted contacts.  
+- **Technical Details:**  
+  - Implements Room Database for local data storage.  
+  - Supports two-way synchronization with Firebase.  
+
+### **2.4 Invites System**  
+- **Description:** Enables users to invite others to share their location securely.  
+- **Implementation:**  
+  - Uses Firestore for invite management.  
+  - Displays invited members' locations on the map.  
+
+### **2.5 Location History**  
+- **Description:** Logs user locations over time for review and analysis.  
+- **Technical Details:**  
+  - Stored in Firestore with timestamps.  
+  - Visualized using a polyline on the map.  
+
+### **2.6 Privacy Settings**  
+- Allows users to control visibility of their location data.  
 
 ---
 
-## 4. Architecture Overview  
+## **3. System Requirements**
 
-### **High-Level Design**  
-The app uses an **MVVM (Model-View-ViewModel)** architecture to ensure modularity, scalability, and ease of testing.  
+### **Minimum Requirements**  
+- OS: Android 8.0 (Oreo) or above.  
+- RAM: 2 GB or more.  
+- Storage: Minimum 100 MB of free space.  
+
+### **Dependencies**  
+- Ola Maps SDK (API v3.0).  
+- Firebase Authentication and Firestore.  
+- Android Lifecycle components.  
+
+---
+
+## **4. Architecture Overview**
+
+### **4.1 High-Level Design**  
+The app follows an MVVM (Model-View-ViewModel) pattern, ensuring separation of concerns, improved testability, and ease of updates.  
 
 ```plaintext
 [UI Layer]
    |
-   --> View (Fragments & Activities)  
+   --> Fragments & Activities  
    |
-   --> ViewModel  
+   --> ViewModel (Business Logic)  
    |
-   --> Model (Repository + Database)
+   --> Model (Repositories & Database Access)  
 ```
 
-### **Low-Level Design**  
-**Modules:**  
-1. **MainActivity:** Handles navigation and permissions.  
-2. **Database:** Manages user and contact data.  
-3. **Fragments:** Implements individual UI components (e.g., Home, Maps).  
+### **4.2 Low-Level Design**  
+- **Fragments:**  
+  - `HomeFragment`: Displays dashboard.  
+  - `MapsFragment`: Handles location tracking.  
+  - `GuardFragment`: Manages invites and contact lists.  
+
+- **Databases:**  
+  - Firestore for cloud data management.  
+  - Room Database for offline support.  
 
 ---
 
-## 5. Setup and Installation  
+## **5. Setup and Installation**
 
-1. Clone the repository:  
-   ```bash  
-   git clone https://github.com/yourusername/nirbhaya.git  
-   ```  
-2. Open the project in Android Studio.  
-3. Add the Ola Maps SDK API key in the appropriate file.  
-4. Run the app on an Android device/emulator.  
+1. **Clone the Repository:**  
+   ```bash
+   git clone https://github.com/yourusername/suraksha-setu.git
+   ```
+2. **Add API Keys:**  
+   - Obtain Ola Maps API Key.  
+   - Add it to the project in `res/values/api_keys.xml`.  
+
+3. **Configure Firebase:**  
+   - Download `google-services.json` from Firebase Console.  
+   - Place it in the app-level directory.  
+
+4. **Build and Run:**  
+   - Sync Gradle and run the app on an emulator or device.  
 
 ---
 
-## 6. Code Walkthrough  
+## **6. Code Walkthrough**
 
-### **MainActivity**  
+### **6.1 MainActivity**  
 
-Handles permissions, navigation, and fragment transactions.  
+Handles permission checks and fragment transitions.  
 
-```kotlin  
-class MainActivity : AppCompatActivity() {
-    private val permissions = arrayOf(
-        android.Manifest.permission.INTERNET,
-        android.Manifest.permission.ACCESS_FINE_LOCATION
-    )
-    private val requestCode = 100
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // Inflate the layout and check permissions
+```kotlin
+private fun checkAndRequestPermissions() {
+    val permissionsToRequest = permissions.filter {
+        ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED
     }
-
-    private fun checkAndRequestPermissions() {
-        // Request necessary permissions
+    if (permissionsToRequest.isNotEmpty()) {
+        ActivityCompat.requestPermissions(this, permissionsToRequest.toTypedArray(), requestCode)
     }
 }
-```  
+```
 
-### **Room Database Implementation**  
+### **6.2 Maps Integration**  
 
-Manages CRUD operations for contacts.  
+Uses `OlaMap` to add markers dynamically for family members.  
 
-```kotlin  
-@Dao
-interface ContactDao {
-    @Insert
-    suspend fun insertContact(contact: ContactModel)
+```kotlin
+val markerOptions = OlaMarkerOptions.Builder()
+    .setMarkerId(userEmail)
+    .setPosition(OlaLatLng(latitude, longitude))
+    .setSnippet("User: $userName")
+    .setIconRotation(0f)
+    .setIsAnimationEnable(true)
+    .build()
 
-    @Query("SELECT * FROM contactList")
-    suspend fun getAllContacts(): List<ContactModel>
+olaMap.addMarker(markerOptions)
+```
+
+### **6.3 SOS Alert System**  
+
+Combines location tracking with notifications.  
+
+```kotlin
+private fun sendSOSAlert() {
+    val location = getCurrentLocation()
+    firestore.collection("sosAlerts")
+        .add(mapOf("location" to location, "timestamp" to System.currentTimeMillis()))
 }
-```  
+```
 
 ---
 
-## 7. Detailed Flowcharts  
+## **7. Detailed Flowcharts**
 
-### **High-Level Flowchart**  
+### **7.1 High-Level Flowchart**
 
-This flowchart illustrates the primary workflows:  
-
-```plaintext  
-[App Launch]  
+```plaintext
+[User Opens App]  
     |  
-    +---> [Permission Checks]  
+    +---> [Permission Check]  
              |  
-             +---> [Load Main Screen]  
+             +---> [Load Dashboard]  
                       |  
-                      +---> [User Actions: SOS, Location, Contacts]  
-```  
+                      +---> [Access Features: Maps, SOS, Invites]  
+```
 
-### **Low-Level Flowchart: SOS Feature**  
+### **7.2 Low-Level Flowchart: Invites**
 
-```plaintext  
-[User Presses SOS]  
+```plaintext
+[User Sends Invite]  
     |  
-    +---> [Fetch Location Data]  
+    +---> [Save Invite in Firestore]  
              |  
-             +---> [Send Data to Server]  
+             +---> [Notify Invited User]  
                       |  
-                      +---> [Notify Family Members]  
-```  
+                      +---> [Accept/Deny Action]  
+```
 
 ---
 
-## 8. Screenshots and User Interface  
+## **8. Screenshots and User Interface**
 
-**Placeholder:** Add annotated screenshots of your app UI for Home Screen, Maps, SOS, etc.  
-
----
-
-## 9. Workflows  
-
-### **9.1 Sending SOS Alerts**  
-
-1. User taps the SOS button.  
-2. App fetches the current location using Ola Maps.  
-3. A notification is sent to family members.  
-
-### **9.2 Viewing Locations on Map**  
-
-1. Navigate to the "Dashboard" tab.  
-2. Select a family member to view their live location.  
+**Screenshots:**  
+- Home Screen  
+- SOS Alert Screen  
+- Map View with Markers  
 
 ---
 
-## 10. Privacy and Security  
+## **9. Workflows**
 
-### **10.1 Location Data**  
-- Location data is encrypted during transmission.  
-
-### **10.2 User Permissions**  
-- Users have full control over who can access their data.  
+### **9.1 SOS Alerts**  
+Triggers notifications with real-time location.
 
 ---
 
-## 11. Testing  
+## **10. Privacy and Security**
 
-### **11.1 Test Scenarios:**  
-- Verify SOS alerts.  
-- Validate location tracking functionality.  
-
-### **11.2 Example Test Case:**  
-
-| Test Case         | Expected Outcome                     | Result  |  
-|--------------------|--------------------------------------|---------|  
-| Send SOS Alert     | Family receives location notification | Pass    |  
+### **Data Encryption:**  
+All sensitive data is encrypted using AES-256 during transmission.  
 
 ---
 
-## 12. Future Enhancements  
+## **11. Testing**
 
-- Integration with wearable devices.  
-- Voice-activated SOS feature.  
+### **Sample Test Case:**  
 
----
-
-## 13. Contributions  
-
-1. Fork the repository.  
-2. Submit pull requests with proper documentation.  
+| Test Case          | Expected Outcome                     | Result  |  
+|---------------------|--------------------------------------|---------|  
+| Add Contact         | Contact saved in database           | Pass    |  
 
 ---
 
-## 14. License  
+## **12. Challenges and Solutions**
 
-This project is licensed under the MIT License.  
+### **Challenge:** Location latency.  
+**Solution:** Optimized location fetch intervals.
+
+---
+
+## **References**
+
+1. [Ola Maps SDK Documentation](https://maps.olacabs.com)  
+2. [Firebase Firestore Guide](https://firebase.google.com/docs/firestore)  
+3. Android Developer Documentation  
 
