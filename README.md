@@ -235,10 +235,23 @@ private fun sendSOSAlert() {
 
 ## **8. Screenshots and User Interface**
 
-**Screenshots:**  
-- Home Screen  
-- SOS Alert Screen  
-- Map View with Markers  
+
+<div style="display: flex; justify-content: space-around;">
+    <div style="text-align: center;">
+        <img src="./home.jpeg" alt="Home" width="300" height="600" style="border: 2px solid black;" />
+        <p>Home</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="./dashboard.jpeg" alt="Dashboard" width="300" height="600" style="border: 2px solid black;" />
+        <p>Dashboard</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="./profile.jpeg" alt="Profile" width="300" height="600" style="border: 2px solid black;" />
+        <p>Profile</p>
+    </div>
+</div>
+
+
 
 ---
 
